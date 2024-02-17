@@ -27,8 +27,7 @@ def hallarLinea(imagen):
                 linea_final = (punto_inicial[0], punto_inicial[1], punto_final[0], punto_final[1])
     return linea_final
 
-# Cambio: Cambiar la fuente de captura a un archivo de video
-cap = cv2.VideoCapture('\Media\v1.mp4') # Cambiar 'nombre_del_video.mp4' al nombre de tu archivo de video
+cap = cv2.VideoCapture(1)
 
 while True:
     ret, frame = cap.read()
@@ -44,7 +43,7 @@ while True:
         if angle_deg < 0:
             angle_deg += 360
     except:
-        print("Error al hallar la línea")
+        print("Shale")
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     _, thresh = cv2.threshold(gray, 130, 255, cv2.THRESH_BINARY)
@@ -64,12 +63,16 @@ while True:
         radius = int(radius)
         cv2.circle(frame, center, radius, (0, 255, 0), 2)
 
+        
+
+        
+
         cv2.line(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
 
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(frame, f'Ángulo: {angle_deg:.2f} grados', (10, 30), font, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(frame, f'Angulo: {angle_deg:.2f} grados', (10, 30), font, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
-    cv2.imshow('Manómetro con Ángulo', frame)
+    cv2.imshow('Manometro con Angulo', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 

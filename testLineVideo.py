@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 cap = cv2.VideoCapture(1)
-frame2=None
+
 while True:
     ret, frame = cap.read()
     if not ret:
@@ -24,13 +24,13 @@ while True:
                 for linea in lineas:
                     x1, y1, x2, y2 = linea[0]
                     print(f"x1:{x1}\ny1:{y1}\nx2:{x2}\ny2:{y2}")
-                    frame2 = cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
-               
+                    cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
+                cv2.imshow('Lineas detectadas', frame)
                     
     except:
         print("Shale")
 
-    cv2.imshow('Manometro con Angulo', frame)
+    #cv2.imshow('Manometro con Angulo', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
