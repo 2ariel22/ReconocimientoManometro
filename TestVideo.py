@@ -1,4 +1,4 @@
-import cv2
+qimport cv2
 import numpy as np
 
 def hallarLinea(imagen):
